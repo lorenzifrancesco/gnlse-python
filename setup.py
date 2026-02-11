@@ -1,11 +1,22 @@
-import pkg_resources
-
 from setuptools import find_packages
 from setuptools import setup
 
-with open('requirements.txt', 'r') as fh:
-    reqs = [str(requirement)
-            for requirement in pkg_resources.parse_requirements(fh)]
+def parse_requirements(path):
+    reqs = []
+    with open(path, 'r') as fh:
+        for line in fh:
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            if line.startswith('-r '):
+                nested = line.split(maxsplit=1)[1]
+                reqs.extend(parse_requirements(nested))
+                continue
+            reqs.append(line)
+    return reqs
+
+
+reqs = parse_requirements('requirements.txt')
 
 with open("README.md", "r") as fh:
     long_description = fh.read()

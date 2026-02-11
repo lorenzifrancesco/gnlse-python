@@ -132,3 +132,8 @@ dmypy.json
 # Built Sphinx documentation
 docs/_build/
 
+
+# Local outputs
+media/
+input/*
+!input/wdm_nli_config.toml

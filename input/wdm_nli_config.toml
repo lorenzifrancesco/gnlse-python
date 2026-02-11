@@ -1,0 +1,33 @@
+[modulation]
+order = 16
+symbol_rate_gbd = 32.0
+samples_per_symbol = 32
+rrc_rolloff = 0.2
+rrc_span_symbols = 8
+n_symbols = 5000
+
+[wdm]
+n_channels = 11
+channel_spacing_thz = 0.05
+power_per_channel_w = 1e-3
+
+[fiber]
+wavelength_nm = 1550.0
+fiber_length_m = 20000.0
+nonlinearity = 1.3e-3
+loss_db_per_m = 0.0
+betas = [-2.127e-2]
+
+[monte_carlo]
+n_trials = 5
+rng_seed = 1234
+
+[solver]
+z_saves = 2
+rtol = 1e-5
+atol = 1e-7
+
+[output]
+save_dir = "media/constellation"
+save_name = "constellation.png"
+show_plot = false

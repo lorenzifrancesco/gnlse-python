@@ -2,14 +2,14 @@
 order = 16
 symbol_rate_gbd = 32.0
 samples_per_symbol = 32
-rrc_rolloff = 0.2
-rrc_span_symbols = 8
+rrc_rolloff = 0.25
+rrc_span_symbols = 12
 n_symbols = 5000
 
 [wdm]
-n_channels = 11
-channel_spacing_thz = 0.05
-power_per_channel_w = 1e-3
+n_channels = 5
+channel_spacing_thz = 0.1
+power_per_channel_w = 4e-3
 
 [fiber]
 wavelength_nm = 1550.0
@@ -29,5 +29,8 @@ atol = 1e-7
 
 [output]
 save_dir = "media/constellation"
-save_name = "constellation.png"
+save_name = "constellation16.png"
 show_plot = false
+
+[cache]
+mode = "load" # recompute - load 

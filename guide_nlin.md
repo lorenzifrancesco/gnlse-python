@@ -1,0 +1,1 @@
+it turns out that reducing the rrc rolloff make things worse. this is maybe because the filter is finite step backwards. Nice value seems to be 0.25

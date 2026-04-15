@@ -1,36 +1,43 @@
 [modulation]
 order = 16
-symbol_rate_gbd = 32.0
-samples_per_symbol = 32
-rrc_rolloff = 0.25
+symbol_rate_gbd = 32.0 # [GBd]
+samples_per_symbol = 16
+pulse_shape = "nyquist_rect" # rrc - nyquist_rect
+rrc_rolloff = 0.0
 rrc_span_symbols = 12
-n_symbols = 5000
+n_symbols = 40000
 
 [wdm]
 n_channels = 5
-channel_spacing_thz = 0.1
-power_per_channel_w = 4e-3
+channel_spacing_thz = 0.05 # [THz]
+power_per_channel_w = 0.01e-3 # [W] per WDM channel (single-pol model) 0.6muW = -2dBm 0.1muW = -10dBm
 
 [fiber]
-wavelength_nm = 1550.0
-fiber_length_m = 20000.0
-nonlinearity = 1.3e-3
-loss_db_per_m = 0.0
-betas = [-2.127e-2]
+wavelength_nm = 1550.0 # [nm]
+fiber_length_m = 500e3 # [m]
+nonlinearity = 1.3e-3 # gamma [1/W/m]
+loss_db_per_m = 0.00 # [dB/m] (usually, per km is reported)
+betas = [-2.127e-2] # [ps^2/m, ps^3/m, ...] i.e. [beta2, beta3, ...]
 
 [monte_carlo]
-n_trials = 5
+n_trials = 1
 rng_seed = 1234
 
 [solver]
 z_saves = 2
 rtol = 1e-5
 atol = 1e-7
+ssfm_max_nonlinear_phase_deg = 0.02 # [deg] max nonlinear phase increment per SSFM step
+ssfm_max_step_m = 1000.0 # [m] max SSFM step length
+propagation_backend = "gnlse" # custom_ssfm - gnlse
 
 [output]
 save_dir = "media/constellation"
 save_name = "constellation16.png"
 show_plot = false
+density_geometry = "hex" # square - hex
+density_bins = 196
+hex_gridsize = 58
 
 [cache]
-mode = "load" # recompute - load 
+mode = "load" # recompute - load

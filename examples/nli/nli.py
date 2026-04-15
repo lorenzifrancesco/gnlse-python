@@ -470,7 +470,8 @@ def run_wdm_nli_simulation(config_path: str | Path | None = None):
     )
     max_offset = wdm.channel_spacing_thz * (wdm.n_channels - 1) / 2.0
     if max_offset + channel_bw_thz / 2.0 > f_max:
-        raise ValueError("Channel plan exceeds Nyquist bandwidth.")
+        print(f"Warning: here the Nyquist band is not fully right, it should be Nyq/2")
+        raise ValueError(f"Channel plan exceeds Nyquist bandwidth. The values are: {max_offset:.3f} THz offset + {channel_bw_thz/2:.3f} THz half-bandwidth = {max_offset + channel_bw_thz/2:.3f} > {f_max:.3f} THz Nyquist.")
 
     derived_parameters = {
         "resolution": resolution,

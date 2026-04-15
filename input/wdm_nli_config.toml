@@ -1,16 +1,16 @@
 [modulation]
 order = 16
-symbol_rate_gbd = 32.0 # [GBd]
-samples_per_symbol = 16
+symbol_rate_gbd = 32.0 # [GBd] required 32
+samples_per_symbol = 64
 pulse_shape = "nyquist_rect" # rrc - nyquist_rect
 rrc_rolloff = 0.0
 rrc_span_symbols = 12
 n_symbols = 40000
 
 [wdm]
-n_channels = 5
+n_channels = 3
 channel_spacing_thz = 0.05 # [THz]
-power_per_channel_w = 0.01e-3 # [W] per WDM channel (single-pol model) 0.6muW = -2dBm 0.1muW = -10dBm
+power_per_channel_w = 0.6e-3 # [W] per WDM channel (single-pol model) 0.6muW = -2dBm 0.1muW = -10dBm
 
 [fiber]
 wavelength_nm = 1550.0 # [nm]
